@@ -1,0 +1,13 @@
+<br/>
+<h3 class="text-center">Products</h3>
+<hr>
+<div class="container">
+    <div class="row">
+        <ul class="list-group list-group-horizontal" *ngFor="let product of products">
+            <li class="list-group-item flex-fill">{{ product.name }}</li>
+            <li class="list-group-item flex-fill">€{{ product.price }}</li>
+            <li class="list-group-item flex-fill">Quantity</li>
+            <li class="list-group-item btn-success">+</li>
+        </ul>
+    </div>
+</div>
