@@ -10,6 +10,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'payment', component: PaymentComponent },
 ];
 
 @NgModule({
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     CheckoutComponent,
     HomeComponent,
     ContactComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
