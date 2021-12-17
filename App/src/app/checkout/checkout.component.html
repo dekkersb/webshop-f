@@ -7,13 +7,15 @@
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h5>Order details:</h5>
         <hr>
-          <ul class="list-group list-group-horizontal" *ngFor="let product of products">
-            <li class="list-group-item row-cols-1 flex-fill">{{ product.name }}</li>
-            <li class="list-group-item">Quantity: 0</li>
-            <li class="list-group-item">Total: €</li>
+        <form (ngSubmit)="onCreatePost(f.value)" #f="ngForm">
+          <ul class="list-group list-group-horizontal" *ngFor="let orderItem of orderItems">
+            <input type="text" value="{{ orderItem.productName }}" class="flex-fill" name="orderItemName" disabled>
+            <input type="number" value="{{ orderItem.quantity }}" name="orderItemQuantity" disabled>
+            <input type="text" value="{{ orderItem.productPrice}}" name="orderTotalPrice" disabled>
           </ul>
         <hr>
-        <h6 class="list-group-item" style="float:right">Total order price: €51.120,-</h6>
+          <input type="text" style="float:right" value="Total order price: €.." disabled>
+        </form>
       </div>
     </div>
   </div>

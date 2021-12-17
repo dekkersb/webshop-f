@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <ul class="list-group list-group-horizontal" *ngFor="let product of products">
-            <li class="list-group-item flex-fill">{{ product.name }}</li>
-            <li class="list-group-item flex-fill">€{{ product.price }}</li>
-            <li class="list-group-item flex-fill">Quantity</li>
-            <li class="list-group-item btn-success">+</li>
+        <ul class="list-group list-group-horizontal" *ngFor="let product of products | async">
+            <li class="list-group-item flex-fill">{{ product.productName }}</li>
+            <li class="list-group-item flex-fill">€{{ product.productPrice }}</li>
+            <li class="list-group-item btn-success" style="cursor: pointer" (click)="addToCart(product)">+</li>
+          <li class="list-group-item">{{ product.quantity}}</li>
         </ul>
       </div>
     </div>
