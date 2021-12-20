@@ -10,12 +10,14 @@ import {CartService} from "../shared/services/cart.service";
 export class ShoppingCartComponent implements OnInit {
 
   orderItems = this.cartService.getOrderItems();
+  totalOrderPrice = this.cartService.getTotalOrderPrice();
 
   constructor(
     private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
+    this.cartService.getTotalOrderPrice();
   }
 
 }

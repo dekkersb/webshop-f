@@ -8,7 +8,7 @@ export class ProductService {
   products: Product[] = [];
 
   getProducts() {
-    return this.http.get<{productName: string, productPrice: number, quantity: number }[]>
+    return this.http.get<{productName: string, productPrice: number}[]>
     ('http://recrashop.test/api/products/');
   }
 

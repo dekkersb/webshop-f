@@ -6,6 +6,7 @@ import {Product} from "../shared/models/product.model";
 
 import {CartService} from "../shared/services/cart.service";
 import {ProductService} from "../shared/services/product.service";
+import {Orderitem} from "../shared/models/orderitem.model";
 
 @Component({
   selector: 'app-product-list',
@@ -26,11 +27,11 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe();
-    console.log(this.products);
+    this.cartService.getTotalOrderPrice();
   }
 
-  addToCart(product: Product) {
-    this.cartService.addToCart(product);
+  addToCart(product: Orderitem) {
+      this.cartService.addToCart(product);
   }
 
 }

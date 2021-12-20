@@ -13,7 +13,8 @@ import {CartService} from "../shared/services/cart.service";
 })
 export class CheckoutComponent implements OnInit {
 
-orderItems = this.cartService.getOrderItems();
+  orderItems = this.cartService.getOrderItems();
+  totalOrderPrice = this.cartService.getTotalOrderPrice();
 
   onCreatePost(postData: {customerName: string; customerEmail: string; customerAddress: string; customerCity: string; customerPhone: string;})
   {
@@ -31,5 +32,7 @@ orderItems = this.cartService.getOrderItems();
     ) {
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartService.getTotalOrderPrice();
+  }
 }

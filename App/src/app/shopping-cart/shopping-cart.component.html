@@ -9,7 +9,7 @@
             <li class="list-group-item btn-success">+</li>
             <li class="list-group-item btn-danger">-</li>
             <li class="list-group-item">{{ orderItem.quantity }} </li>
-            <li class="list-group-item">{{ orderItem.productPrice|currency }}</li>
+            <li class="list-group-item">{{ orderItem.totalProductPrice | currency }}</li>
         </ul>
         <div>
         </div>
@@ -18,7 +18,7 @@
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="d-flex flex-row-reverse">
             <li class="btn btn-dark" style="background-color: #002A46;">Checkout</li>
-            <li class="list-group-item">Total order price: <strong>€</strong></li>
+            <li class="list-group-item">Total order price: <strong>{{ totalOrderPrice | currency}}</strong></li>
         </ul>
       </div>
     </div>

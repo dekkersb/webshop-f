@@ -11,10 +11,10 @@
           <ul class="list-group list-group-horizontal" *ngFor="let orderItem of orderItems">
             <input type="text" value="{{ orderItem.productName }}" class="flex-fill" name="orderItemName" disabled>
             <input type="number" value="{{ orderItem.quantity }}" name="orderItemQuantity" disabled>
-            <input type="text" value="{{ orderItem.productPrice}}" name="orderTotalPrice" disabled>
+            <input type="text" value="{{ orderItem.totalProductPrice | currency }}" name="orderTotalPrice" disabled>
           </ul>
         <hr>
-          <input type="text" style="float:right" value="Total order price: €.." disabled>
+          <input type="text" style="float:right" value="Total: $" disabled>
         </form>
       </div>
     </div>
