@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {CartService} from "../shared/services/cart.service";
+import {ProductService} from "../shared/services/product.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,16 +9,18 @@ import {CartService} from "../shared/services/cart.service";
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-
+  products = this.productService.getProducts();
   orderItems = this.cartService.getOrderItems();
-  totalOrderPrice = this.cartService.getTotalOrderPrice();
+
+  totalOrderPrice = 0;
 
   constructor(
     private cartService: CartService,
+    private productService: ProductService,
   ) { }
 
   ngOnInit(): void {
-    this.cartService.getTotalOrderPrice();
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
   }
 
 }

@@ -14,7 +14,7 @@ import {CartService} from "../shared/services/cart.service";
 export class CheckoutComponent implements OnInit {
 
   orderItems = this.cartService.getOrderItems();
-  totalOrderPrice = this.cartService.getTotalOrderPrice();
+  totalOrderPrice = 0;
 
   onCreatePost(postData: {customerName: string; customerEmail: string; customerAddress: string; customerCity: string; customerPhone: string;})
   {
@@ -33,6 +33,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cartService.getTotalOrderPrice();
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
   }
 }

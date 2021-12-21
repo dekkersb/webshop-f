@@ -8,6 +8,5 @@ export class Orderitem {
     public totalProductPrice: number,
   ) {
   }
-
 }
 

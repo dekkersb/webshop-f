@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
@@ -14,7 +14,6 @@ import {Orderitem} from "../shared/models/orderitem.model";
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
   products = this.productService.getProducts();
   orderItems = this.cartService.getOrderItems();
 
@@ -23,15 +22,25 @@ export class ProductListComponent implements OnInit {
     private http: HttpClient,
     private cartService: CartService,
     private productService: ProductService,
-  ) {}
-
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe();
-    this.cartService.getTotalOrderPrice();
+  ) {
   }
 
-  addToCart(product: Orderitem) {
+  ngOnInit(): void {
+  }
+
+  addToCart(product: Product) {
       this.cartService.addToCart(product);
   }
 
+  deleteFromCart(orderItem: Product) {
+    this.cartService.deleteFromCart(orderItem);
+  }
+
+  getCartQuantity (product: Product) {
+    const productExistInCart = this.orderItems.find(item => item.productName === product.productName);
+    if (productExistInCart) {
+      product.quantity = productExistInCart.quantity;
+    }
+    return product.quantity;
+  }
 }
