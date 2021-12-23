@@ -10,6 +10,7 @@
               <div>{{ orderItem.productName }}</div>
             <div style="width: 20px;">
               <span class="badge bg-secondary fs-6">{{ orderItem.quantity }}</span>
+              <button class="btn btn-outline-danger" style="cursor: pointer;width: 75px;" (click)="deleteFromCart(orderItem);getTotalOrderPrice()">-</button>
             </div>
             <div class="list-group-item text-center" style="width: 100px;">{{ orderItem.totalProductPrice | currency }}</div>
             </li>
@@ -24,4 +25,5 @@
         </ul>
       </div>
     </div>
+</div>
 </div>

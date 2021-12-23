@@ -33,6 +33,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice(this.orderItems);
   }
 }

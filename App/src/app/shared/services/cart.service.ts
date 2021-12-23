@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import {Product} from "../models/product.model";
 import {ProductService} from "./product.service";
-import {Orderitem} from "../models/orderitem.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,6 @@ export class CartService {
   orderItems: Product[] = [];
 
   addToCart(product: Product) {
-    // 1. Heeft product al een orderitem (bestaat die al in de cart?)
-    // 2. Bestaat die niet, voeg dan product als orderItem toe.
-    // 3. Bestaat die wel, quantity ++.
-    //4. Update cart.
     const productExistInCart = this.orderItems.find(item => item.productName === product.productName);
     if (productExistInCart) {
       productExistInCart.quantity++;
@@ -32,11 +27,11 @@ export class CartService {
     if (productExistInCart.quantity >= 1) {
       productExistInCart.quantity = productExistInCart.quantity -1;
       productExistInCart.totalProductPrice = productExistInCart.productPrice * productExistInCart.quantity;
-    } if (productExistInCart.quantity == 0) {
-      console.log('test');
-      this.orderItems.forEach((value, index) => {
-        if (value.totalProductPrice==0) this.orderItems.splice(index, 1);
-      });
+     if (productExistInCart.quantity <= 1) {
+       this.orderItems.forEach((value, index) => {
+         if (value.quantity == 0) this.orderItems.splice(index, 1);
+       });
+     }
     }
   }
 
@@ -44,13 +39,21 @@ export class CartService {
     return this.orderItems;
   }
 
-  getTotalOrderPrice() {
+  getTotalOrderPrice(orderItems) {
     return this.orderItems.reduce((sum, item) => sum += item.totalProductPrice, 0);
   }
 
   clearCart() {
     this.orderItems = [];
     return this.orderItems;
+  }
+
+  getCartQuantity (product: Product) {
+    const productExistInCart = this.orderItems.find(item => item.productName === product.productName);
+    if (productExistInCart) {
+      product.quantity = productExistInCart.quantity;
+    }
+    return product.quantity;
   }
 
   constructor(
