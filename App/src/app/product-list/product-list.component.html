@@ -4,16 +4,15 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-8 mx-auto">
-        <ul class="list-group" *ngFor="let product of products | async; let item of orderItems">
+        <ul class="list-group" *ngFor="let product of products | async">
           <li class="list-group-item d-inline-flex justify-content-between align-items-center">
-            <div class="fw-bold">{{ product.productName }} </div>
-              <div>€{{ product.productPrice }}</div>
+            <div class="fw-bold">{{ product.name }} </div>
+              <div>€{{ product.price }}</div>
               <div style="width: 20px;">
                 <span class="badge bg-info fs-6">{{ getCartQuantity(product) }}</span>
               </div>
-
-            <div class=btn-group style="width: 150px;">
-              <button class="btn btn-outline-success" style="cursor: pointer;width: 75px" (click)="addToCart(product)">+</button>
+            <div>
+              <button class="btn btn-outline-success" style="cursor: pointer;width: 35px" (click)="addToCart(product)">+</button>
             </div>
           </li>
         </ul>

@@ -7,17 +7,21 @@
       <div class="col-12 col-lg-8 mx-auto">
         <ul class="list-group" *ngFor="let orderItem of orderItems">
             <li class="list-group-item d-inline-flex justify-content-between align-items-center">
-              <div>{{ orderItem.productName }}</div>
-            <div style="width: 20px;">
-              <span class="badge bg-secondary fs-6">{{ orderItem.quantity }}</span>
-              <button class="btn btn-outline-danger" style="cursor: pointer;width: 75px;" (click)="deleteFromCart(orderItem);getTotalOrderPrice()">-</button>
-            </div>
-            <div class="list-group-item text-center" style="width: 100px;">{{ orderItem.totalProductPrice | currency }}</div>
+              <div>{{ orderItem.product.name }}</div>
+              <div>{{ orderItem.product.price}}</div>
+              <div>
+                <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="deleteFromCart(orderItem)">-</button>
+                <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="addToCart(orderItem)">+</button>
+              </div>
+              <div style="width: 20px;">
+                <span class="badge bg-secondary fs-6" style="width: 50px;">{{ orderItem.quantity }}</span>
+              </div>
+              <div class="list-group-item text-center" style="width: 100px;">{{ orderItem.totalProductPrice | currency }}</div>
             </li>
         </ul>
         <br>
         </div>
-            <hr>
+        <hr>
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="d-flex flex-row-reverse">
             <li class="btn btn-dark" style="background-color: #002A46;">Checkout</li>

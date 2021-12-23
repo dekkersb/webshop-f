@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from "../shared/services/cart.service";
 import {ProductService} from "../shared/services/product.service";
 import {Product} from "../shared/models/product.model";
+import {Orderitem} from "../shared/models/orderitem.model";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,16 +13,16 @@ import {Product} from "../shared/models/product.model";
 export class ShoppingCartComponent implements OnInit {
   products = this.productService.getProducts();
   orderItems = this.cartService.getOrderItems();
+  totalOrderPrice = this.cartService.getTotalOrderPrice();
 
-  totalOrderPrice = 0;
-
-  getTotalOrderPrice() {
-    this.cartService.getTotalOrderPrice(this.orderItems);
+  deleteFromCart(orderItem: Orderitem) {
+    this.cartService.deleteFromCart(orderItem);
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
   }
 
-  deleteFromCart(orderItem: Product) {
-    this.cartService.deleteFromCart(orderItem);
-    this.totalOrderPrice = this.cartService.getTotalOrderPrice(this.orderItems);
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
   }
 
   constructor(
@@ -30,6 +31,6 @@ export class ShoppingCartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.totalOrderPrice = this.cartService.getTotalOrderPrice(this.orderItems);
   }
+
 }

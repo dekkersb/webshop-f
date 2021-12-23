@@ -1,12 +1,12 @@
 import {Product} from "./product.model";
+import {Order} from "./order.model";
+
 
 export class Orderitem {
-  constructor(
-    public productName: string,
-    public productPrice: number,
-    public quantity: number,
-    public totalProductPrice: number,
-  ) {
-  }
+  id: number;
+  product: Product;
+  // order: Order;
+  quantity: number;
+  totalProductPrice: number;
 }
 

@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class ProductService {
   products: Product[] = [];
 
-  getProducts() {
+  getProducts(){
     return this.http.get<Product[]>
     ('http://recrashop.test/api/products/');
   }

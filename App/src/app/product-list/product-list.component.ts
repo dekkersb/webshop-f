@@ -17,30 +17,26 @@ export class ProductListComponent implements OnInit {
   products = this.productService.getProducts();
   orderItems = this.cartService.getOrderItems();
 
+  addToCart(product: Product) {
+      this.cartService.addToCart(product);
+  }
+
+  getCartQuantity(orderItem: Orderitem) {
+    const itemExistInCart = this.orderItems.find(item => item.id === orderItem.id);
+    if (itemExistInCart) {
+      orderItem.quantity = itemExistInCart.quantity;
+    }
+    return orderItem.quantity;
+  }
+
   constructor(
     private router: Router,
     private http: HttpClient,
     private cartService: CartService,
     private productService: ProductService,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-  }
-
-  addToCart(product: Product) {
-      this.cartService.addToCart(product);
-  }
-
-  deleteFromCart(orderItem: Product) {
-    this.cartService.deleteFromCart(orderItem);
-  }
-
-  getCartQuantity (product: Product) {
-    const productExistInCart = this.orderItems.find(item => item.productName === product.productName);
-    if (productExistInCart) {
-      product.quantity = productExistInCart.quantity;
-    }
-    return product.quantity;
+    console.log(this.productService.getProducts());
   }
 }

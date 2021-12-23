@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
-import {Product} from "../shared/models/product.model";
-import {Customer} from "../shared/models/customer.model";
 import {CartService} from "../shared/services/cart.service";
 
 @Component({
@@ -33,6 +31,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalOrderPrice = this.cartService.getTotalOrderPrice(this.orderItems);
+    this.totalOrderPrice = this.cartService.getTotalOrderPrice();
   }
 }
