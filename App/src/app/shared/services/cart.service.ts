@@ -15,7 +15,6 @@ export class CartService {
     const itemExistInCart = this.orderItems.find(item => item.id == product.id);
     if (itemExistInCart) {
       itemExistInCart.quantity++;
-
       this.setTotalProductPrice(itemExistInCart);
     } else {
       const orderItem = new Orderitem()

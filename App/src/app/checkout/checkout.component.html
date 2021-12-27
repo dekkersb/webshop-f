@@ -7,15 +7,13 @@
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h5>Order details:</h5>
         <hr>
-        <form (ngSubmit)="onCreatePost(f.value)" #f="ngForm">
           <ul class="list-group list-group-horizontal fs-6" *ngFor="let orderItem of orderItems">
-            <input type="text" value="{{ orderItem.productName }}" class="flex-fill" name="orderItemName" disabled>
+            <input type="text" value="{{ orderItem.product.name }}" class="flex-fill" name="orderItemName" disabled>
             <input type="number" value="{{ orderItem.quantity }}" name="orderItemQuantity" disabled>
-            <input type="text" value="{{ orderItem.totalProductPrice | currency }}" name="orderTotalPrice" disabled>
+            <input type="text" value="{{ orderItem.totalProductPrice | currency }}" name="productTotalPrice" disabled>
           </ul>
         <hr>
-          <input type="text" style="float:right;font-size: 16px" value="{{ totalOrderPrice | currency}}" disabled>
-        </form>
+          <input type="text" name="orderTotalPrice" style="float:right;font-size: 16px" value="{{ totalOrderPrice | currency}}" disabled>
       </div>
     </div>
   </div>
@@ -25,30 +23,30 @@
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h5>Customer details:</h5>
         <hr>
-        <form (ngSubmit)="onCreatePost(f.value); f.resetForm()" #f="ngForm">
+        <form (ngSubmit)="onCreateOrder(f.value)" #f="ngForm">
           <div class="form-group">
-            <label for="customerName">Name</label>
-            <input type="text" id="customerName" class="form-control" ngModel name="customerName" required #name="ngModel">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" ngModel name="name" required #name="ngModel">
           </div>
           <small class="form-text" style="color: red;" *ngIf="!name.valid && name.touched">* Please fill in name</small>
           <div class="form-group">
-            <label for="customerEmail">Email</label>
-            <input type="email" id="customerEmail" class="form-control" ngModel name="customerEmail" required email #email="ngModel" >
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" ngModel name="email" required email #email="ngModel" >
           </div>
           <small class="form-text" style="color: red;" *ngIf="!email.valid && email.touched">* Please enter a valid email address</small>
           <div class="form-group">
-            <label for="customerAddress">Address</label>
-            <input type="text" id="customerAddress" class="form-control" ngModel name="customerAddress" required #address="ngModel">
+            <label for="address">Address</label>
+            <input type="text" id="address" class="form-control" ngModel name="address" required #address="ngModel">
           </div>
           <small class="form-text" style="color: red;" *ngIf="!address.valid && address.touched">* Please fill in address</small>
           <div class="form-group">
-            <label for="customerCity">City</label>
-            <input type="text" id="customerCity" class="form-control" ngModel name="customerCity" required #city="ngModel">
+            <label for="city">City</label>
+            <input type="text" id="city" class="form-control" ngModel name="city" required #city="ngModel">
           </div>
           <small class="form-text" style="color: red;" *ngIf="!city.valid && city.touched">* Please fill in city</small>
           <div class="form-group">
-            <label for="customerPhone">Phone number</label>
-            <input type="text" id="customerPhone" class="form-control" ngModel name="customerPhone" required #phone="ngModel">
+            <label for="phone">Phone number</label>
+            <input type="text" id="phone" class="form-control" ngModel name="phone" required #phone="ngModel">
           </div>
             <li class="list-unstyled"><small id="formHelp" class="form-text" style="color: red;" *ngIf="!phone.valid && phone.touched">* Please fill in phone-number</small></li>
           <li class="list-unstyled"><small id="formInfo" class="form-text text-muted">We'll never share your details with anyone else.</small></li>

@@ -8,7 +8,7 @@
         <ul class="list-group" *ngFor="let orderItem of orderItems">
             <li class="list-group-item d-inline-flex justify-content-between align-items-center">
               <div>{{ orderItem.product.name }}</div>
-              <div>{{ orderItem.product.price}}</div>
+              <div>{{ orderItem.product.price|currency}}</div>
               <div>
                 <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="deleteFromCart(orderItem)">-</button>
                 <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="addToCart(orderItem)">+</button>
