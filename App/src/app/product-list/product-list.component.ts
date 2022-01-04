@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
 import {Product} from "../shared/models/product.model";
@@ -30,7 +29,6 @@ export class ProductListComponent implements OnInit {
   }
 
   constructor(
-    private router: Router,
     private http: HttpClient,
     private cartService: CartService,
     private productService: ProductService,

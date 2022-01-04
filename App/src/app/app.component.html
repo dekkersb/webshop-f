@@ -1,3 +1,9 @@
 <app-header></app-header>
       <router-outlet></router-outlet>
 
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  const stripe = Stripe('pk_test_51KBLHdIll123QyaCmX14d3ZGyDpWaMEYa6GfXpwkD4j8rryTGdKOevtS7NYfKJySDTXpJZkLckMFG0rJOWg1L2VG00UwcyplCd');
+  const elements = stripe.elements();
+</script>
+

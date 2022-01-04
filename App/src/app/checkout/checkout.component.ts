@@ -40,6 +40,7 @@ export class CheckoutComponent implements OnInit {
     this.http.post<Order>('http://recrashop.test/api/order/create',
       order
     ).subscribe(responseData => {
+      window.location.href = (responseData['url']);
     });
     // this.router.navigateByUrl('/payment');
   }

@@ -4,6 +4,7 @@ import {CartService} from "../shared/services/cart.service";
 import {ProductService} from "../shared/services/product.service";
 import {Product} from "../shared/models/product.model";
 import {Orderitem} from "../shared/models/orderitem.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -28,6 +29,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private productService: ProductService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
