@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PaymentFailComponent } from './payment/payment-fail/payment-fail.component';
 import { ProductService } from "./shared/services/product.service";
 import { PaymentSuccessComponent } from './payment/payment-success/payment-success.component';
+import {OrderService} from "./shared/services/order.service";
 
 const appRoutes: Routes = [
   { path: '', component: ProductListComponent },
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, OrderService],
   bootstrap: [AppComponent]
 })
 

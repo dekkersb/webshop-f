@@ -11,17 +11,6 @@ import {CartService} from "./cart.service";
 export class OrderService {
 
   orderItems = this.cartService.getOrderItems();
-  totalOrderPrice = this.cartService.getTotalOrderPrice();
-
-  // onCreateCustomer()
-  // {
-  //   const customer = new Customer();
-  //   customer.name = postData.name;
-  //   customer.phone = postData.phone;
-  //   customer.city = postData.city;
-  //   customer.email = postData.email;
-  //   customer.address = postData.address;
-  // }
 
   onCreateOrder(postData: Customer)
   {
@@ -32,24 +21,22 @@ export class OrderService {
     customer.email = postData.email;
     customer.address = postData.address;
 
-    const order = new Order();
+    let order = new Order();
     order.items = this.orderItems;
-    order.totalPrice = this.totalOrderPrice;
+    order.totalPrice = this.cartService.getTotalOrderPrice();
     order.customer = customer;
     console.log(order);
-    // this.http.post<Order>('http://recrashop.test/order/create',
-    //   {
-    //   }
-    // ).subscribe(responseData => {
-    // });
-    // this.router.navigateByUrl('/payment');
+    this.http.post<Order>('http://recrashop.test/api/order/create',
+    order
+    ).subscribe(responseData => {
+      window.location.href = (responseData['url']);
+    });
   }
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private cartService: CartService,
-    private orderService: OrderService,
   ) {
   }
 

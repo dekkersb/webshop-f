@@ -9,7 +9,7 @@ export class ProductService {
 
   getProducts(){
     return this.http.get<Product[]>
-    ('http://recrashop.test/api/products/');
+    ('http://recrashop.test/api/products');
   }
 
   constructor(
