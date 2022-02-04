@@ -6,8 +6,8 @@
     <div class="col-12 col-lg-8 mx-auto">
         <ul class="list-group" *ngFor="let product of products | async">
           <li class="list-group-item d-inline-flex justify-content-between align-items-center">
-            <div class="fw-bold">{{ product.name }} </div>
-              <div>{{ product.price|currency}}</div>
+            <div class="fw-bold" style="width: 200px">{{ product.name }} </div>
+              <div style="width: 120px">{{ product.price|currency}}</div>
               <div style="width: 20px;">
                 <span class="badge bg-info fs-6">{{ getCartQuantity(product) }}</span>
               </div>

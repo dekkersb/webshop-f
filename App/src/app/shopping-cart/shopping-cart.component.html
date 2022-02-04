@@ -7,16 +7,16 @@
       <div class="col-12 col-lg-8 mx-auto">
         <ul class="list-group" *ngFor="let orderItem of orderItems">
             <li class="list-group-item d-inline-flex justify-content-between align-items-center">
-              <div>{{ orderItem.product.name }}</div>
-              <div>{{ orderItem.product.price|currency}}</div>
+              <div style="width: 180px">{{ orderItem.product.name }}</div>
+              <div style="width: 120px">{{ orderItem.product.price|currency}}</div>
               <div>
                 <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="deleteFromCart(orderItem)">-</button>
                 <button class="btn btn-outline-secondary" style="cursor: pointer;width: 35px;" (click)="addToCart(orderItem)">+</button>
               </div>
-              <div style="width: 20px;">
+              <div style="width: 40px;">
                 <span class="badge bg-secondary fs-6" style="width: 50px;">{{ orderItem.quantity }}</span>
               </div>
-              <div class="list-group-item text-center" style="width: 100px;">{{ orderItem.totalProductPrice | currency }}</div>
+              <div class="list-group-item text-center" style="width: 150px;">{{ orderItem.totalProductPrice | currency }}</div>
             </li>
         </ul>
         <br>
